@@ -1,1 +1,1 @@
-#Generic Project to Prove C Language Programing Skill
+Generic Project to Prove C Language Programing Skill
