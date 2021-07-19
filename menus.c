@@ -11,17 +11,18 @@ const char * header(){
     "\n\nChoose a option entering the corresponding number:\n\a"; // "\a" == makes a sound 
 }
 
-const char * messageError(){
+/*const char * messageError(){
   return 
   "Generic Project to Prove C Language Programing Skill\nDeveloped by @inamarjunior - June, 2021"
   "\n\nPlease, enter a valid option!\n";
-}
+}*/
 
 void mainMenu(){
   int op;
   system("cls||clear");
-  printf("%s", header());
+  
   do{
+    printf("%s", header());
     puts("\n1 - Books\n2 - People\n0 - Exit");
     scanf("%d", &op);
     switch(op){
