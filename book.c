@@ -4,33 +4,34 @@
 #define MAX_BOOKS 50
 
 
-struct Book{
+typedef struct{
   char tittle[81];
   char author[81];
   int isbn;
   int active;
-};
-struct Book book[MAX_BOOKS];
+}Book;
 
-void bookFill(){
-  char tittle[81];
-  char author[81];  
-  int isbn;
-  int op;
+
+Book book[MAX_BOOKS];
+
+void bookFill(Book* livro){
   
+  int op;
+  livro = (Book*)malloc(sizeof(Book));
   do{
     system("cls||clear");
     printf("%s", "Tittle: ");
-    fgets(tittle, sizeof(tittle), stdin);
+    //fgets(tittle, sizeof(tittle), stdin);
+    fgets(livro->tittle, sizeof(livro->tittle), stdin);
     printf("%s", "Author: ");
-    fgets(author, sizeof(author), stdin); 
+    fgets(livro->author, sizeof(livro->author), stdin); 
     printf("%s", "ISBN: ");
-    scanf("%d", &isbn); 
+    scanf("%d", &livro->isbn); 
     for(int i = 0; i < MAX_BOOKS; i++){
       if(book[i].active == 0){
-        strcpy(book[i].tittle, tittle);
-        strcpy(book[i].author, author);
-        book[i].isbn = isbn;
+        strcpy(book[i].tittle, livro->tittle);
+        strcpy(book[i].author, livro->author);
+        book[i].isbn = livro->isbn;
         book[i].active = 1;
         break;
       }
@@ -39,6 +40,7 @@ void bookFill(){
     scanf("%d", &op);
     getchar();
   }while(op != 0);
+  free(livro);
   system("cls||clear");
 }
 
