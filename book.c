@@ -76,3 +76,14 @@ void bookDelete(){
   getchar();
   system("cls||clear");
 }
+
+void recordBook(Book* livro) {
+	FILE* fp;
+
+	fp = fopen("livros.dat", "ab");
+	/*if (fp == NULL) {
+		telaErroArquivoAluno();
+	}*/
+	fwrite(livro, sizeof(Book), 1, fp);
+	fclose(fp);
+}
