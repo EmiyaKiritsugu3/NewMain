@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "book.h"
 #define MAX_BOOKS 50
 
 
-typedef struct{
-  char tittle[81];
-  char author[81];
-  int isbn;
-  int active;
-}Book;
+typedef struct book Book;
 
 
 Book book[MAX_BOOKS];
@@ -36,6 +32,7 @@ void bookFill(Book* livro){
         break;
       }
     }
+    recordBook(livro);
     printf("%s", "\n1 - continue\n0 - exit: ");
     scanf("%d", &op);
     getchar();
@@ -86,4 +83,56 @@ void recordBook(Book* livro) {
 	}*/
 	fwrite(livro, sizeof(Book), 1, fp);
 	fclose(fp);
+}
+
+/*
+void pesquisarAluno(void) {
+	Aluno* aln;
+	char* matr;
+
+	matr = telaPesquisarAluno();
+	aln = buscarAluno(matr);
+	exibirAluno(aln);
+	free(aln); 
+	free(matr);
+}
+*/
+
+void reportTittle(){
+  system("cls||clear");
+  puts("Books List");
+  for(int i = 0; i < MAX_BOOKS; i++){
+    if(book[i].active == 1){
+      printf("\nRegister: %d\n\n", i + 1);
+      printf("Tittle: %s", book[i].tittle);
+    }
+  } 
+  printf("%s", "\nPress any keyword for contiue: ");
+  getc(stdin);   
+}
+
+void reportAuthor(){
+  system("cls||clear");
+  puts("Books List");
+  for(int i = 0; i < MAX_BOOKS; i++){
+    if(book[i].active == 1){
+      printf("\nRegister: %d\n\n", i + 1);
+      printf("Author: %s", book[i].author);
+    }
+  } 
+  printf("%s", "\nPress any keyword for contiue: ");
+  getc(stdin);   
+}
+
+void reportIsbn(){
+  system("cls||clear");
+  puts("Books List");
+  for(int i = 0; i < MAX_BOOKS; i++){
+    if(book[i].active == 1){
+      printf("\nRegister: %d\n\n", i + 1);
+      printf("ISBN: %d", book[i].isbn);
+    }
+  } 
+  printf("%s", "\nPress any keyword for contiue: ");
+  getc(stdin);   
 }

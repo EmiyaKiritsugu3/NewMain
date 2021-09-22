@@ -23,7 +23,7 @@ void mainMenu(){
   
   do{
     printf("%s", header());
-    puts("\n1 - Books\n2 - People\n0 - Exit");
+    puts("\n1 - Books\n2 - People\n3 - Report\n0 - Exit");
     scanf("%d", &op);
     switch(op){
       case 1:
@@ -32,6 +32,8 @@ void mainMenu(){
       case 2:
         peopleMenu();
         break;
+      case 3:
+        report();
       case 0:
         system("cls||clear");
         break;
@@ -84,6 +86,32 @@ void peopleMenu(){
         peopleDelete();
         break;
       case 0:
+        break;
+    }
+  }while(op != 0);
+}
+
+void report(){
+  int op;  
+  
+  do{
+    system("cls||clear");
+    printf("%s", header());
+    puts("\n1 - Tittle\n2 - Author\n3 - ISBN\n0 - Return");
+    scanf("%d", &op);
+    getchar();
+    switch(op){
+      case 1:
+        reportTittle();
+        break;
+      case 2:
+        reportAuthor();
+        break;
+      case 3:
+        reportIsbn();
+        break;
+      case 0:
+        system("cls||clear");
         break;
     }
   }while(op != 0);
